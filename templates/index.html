@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time PIR</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+</head>
+<body>
+
+<h1>Real-Time Motion</h1>
+<h2 id="status">Waiting...</h2>
+
+<script>
+    var socket = io();
+
+    socket.on('new_data', function(data) {
+        if (data.motion == 1) {
+            document.getElementById("status").innerHTML = "🚨 Motion Detected";
+        } else {
+            document.getElementById("status").innerHTML = "✅ No Motion";
+        }
+    });
+</script>
+
+</body>
+</html>
